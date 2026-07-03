@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>온라인 카드헌금 | 진리와찬양교회</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>진리와찬양교회</h1>
+
+<p>Truth & Praise Church</p>
+
+</header>
+
+<nav>
+
+<ul>
+
+<li><a href="index.html">홈</a></li>
+
+<li><a href="about.html">교회소개</a></li>
+
+<li><a href="notice.html">공지사항</a></li>
+
+<li><a href="gallery.html">사진갤러리</a></li>
+
+<li><a href="schedule.html">교회일정</a></li>
+
+<li><a href="sermon.html">설교영상</a></li>
+
+<li><a href="login.html">로그인</a></li>
+
+</ul>
+
+</nav>
+
+<div class="container">
+
+<div class="card">
+
+<h2>온라인 카드헌금</h2>
+
+<p>
+
+헌금하시는 모든 손길 위에 하나님의 은혜가 함께하시기를 축복합니다.
+
+</p>
+
+<br>
+
+<form id="donateForm">
+
+<label>헌금 종류</label>
+
+<select id="gubun">
+
+<option>주일헌금</option>
+
+<option>십일조</option>
+
+<option>감사헌금</option>
+
+<option>선교헌금</option>
+
+<option>건축헌금</option>
+
+<option>장학헌금</option>
+
+<option>기타헌금</option>
+
+</select>
+
+<br><br>
+
+<label>성명</label>
+
+<input
+type="text"
+id="name"
+required>
+
+<br><br>
+
+<label>휴대전화</label>
+
+<input
+type="tel"
+id="phone"
+placeholder="010-0000-0000">
+
+<br><br>
+
+<label>이메일</label>
+
+<input
+type="email"
+id="email">
+
+<br><br>
+
+<label>헌금금액</label>
+
+<input
+type="number"
+id="amount"
+min="1000"
+step="1000"
+placeholder="1000원 이상">
+
+<br><br>
+
+<label>기도제목 (선택)</label>
+
+<textarea
+id="prayer"
+rows="5"></textarea>
+
+<br><br>
+
+<label>
+
+<input
+type="checkbox"
+id="agree">
+
+개인정보 수집 및 이용에 동의합니다.
+
+</label>
+
+<br><br>
+
+<button type="submit">
+
+카드헌금 결제하기
+
+</button>
+
+</form>
+
+</div>
+
+<div class="card">
+
+<h2>계좌헌금</h2>
+
+<p>
+
+농협 123-456-789012
+
+</p>
+
+<p>
+
+예금주 : 진리와찬양교회
+
+</p>
+
+</div>
+
+</div>
+
+<footer>
+
+Copyright © 2026 Truth & Praise Church
+
+</footer>
+
+<script>
+
+document.getElementById("donateForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const amount=document.getElementById("amount").value;
+
+if(amount==""){
+
+alert("헌금금액을 입력하세요.");
+
+return;
+
+}
+
+if(Number(amount)<1000){
+
+alert("최소 헌금금액은 1,000원입니다.");
+
+return;
+
+}
+
+if(!document.getElementById("agree").checked){
+
+alert("개인정보 동의가 필요합니다.");
+
+return;
+
+}
+
+/*
+
+==============================
+
+나이스페이먼츠 연동 위치
+
+예)
+
+AUTHNICE.requestPay({
+
+clientId:"",
+
+method:"card",
+
+orderId:"",
+
+amount:amount,
+
+goodsName:document.getElementById("gubun").value,
+
+buyerName:document.getElementById("name").value,
+
+returnUrl:"https://도메인/payResult.jsp"
+
+});
+
+==============================
+
+*/
+
+alert(
+
+"현재는 프론트엔드 예제입니다.\n\n"
+
++"실제 운영 시 이 위치에서 나이스페이먼츠 결제창이 실행됩니다."
+
+);
+
+});
+
+</script>
+
+</body>
+
+</html>

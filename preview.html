@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>진리와찬양교회</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"맑은 고딕",sans-serif;
+}
+
+body{
+background:#f3f3f3;
+}
+
+header{
+background:#0A4C9A;
+color:white;
+padding:30px;
+text-align:center;
+}
+
+nav{
+background:#08366B;
+}
+
+nav ul{
+display:flex;
+justify-content:center;
+list-style:none;
+}
+
+nav li{
+padding:18px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+nav a:hover{
+color:gold;
+}
+
+.hero{
+background:white;
+padding:70px;
+text-align:center;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+.hero p{
+margin-top:20px;
+font-size:20px;
+}
+
+.container{
+
+width:1200px;
+max-width:95%;
+
+margin:auto;
+
+}
+
+.card{
+
+background:white;
+
+margin-top:30px;
+
+padding:30px;
+
+border-radius:10px;
+
+box-shadow:0 0 10px rgba(0,0,0,.1);
+
+}
+
+.notice{
+
+padding:10px 0;
+
+border-bottom:1px solid #ddd;
+
+}
+
+table{
+
+width:100%;
+
+}
+
+td{
+
+padding:10px;
+
+}
+
+input,select{
+
+width:100%;
+
+padding:12px;
+
+}
+
+button{
+
+background:#0A4C9A;
+
+color:white;
+
+border:none;
+
+padding:15px;
+
+cursor:pointer;
+
+font-size:18px;
+
+width:100%;
+
+}
+
+button:hover{
+
+background:#063167;
+
+}
+
+footer{
+
+margin-top:50px;
+
+background:#222;
+
+color:white;
+
+padding:30px;
+
+text-align:center;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>진리와찬양교회</h1>
+
+<p>Truth & Praise Church</p>
+
+</header>
+
+<nav>
+
+<ul>
+
+<li><a href="#">홈</a></li>
+
+<li><a href="#">교회소개</a></li>
+
+<li><a href="#">예배안내</a></li>
+
+<li><a href="#">설교영상</a></li>
+
+<li><a href="#">공지사항</a></li>
+
+<li><a href="#donation">온라인헌금</a></li>
+
+<li><a href="#">오시는길</a></li>
+
+</ul>
+
+</nav>
+
+<section class="hero">
+
+<h1>예수 그리스도의 사랑을 전하는 교회</h1>
+
+<p>하나님은 사랑이시라</p>
+
+<p>요한일서 4장 8절</p>
+
+</section>
+
+<div class="container">
+
+<div class="card">
+
+<h2>예배시간</h2>
+
+<br>
+
+<ul>
+
+<li>주일예배 : 오전 11:00</li>
+
+<li>수요예배 : 오후 7:30</li>
+
+<li>금요기도회 : 오후 8:00</li>
+
+<li>새벽기도 : 오전 5:30</li>
+
+</ul>
+
+</div>
+
+<div class="card">
+
+<h2>이번 주 말씀</h2>
+
+<br>
+
+<p>
+
+"하나님이 세상을 이처럼 사랑하사 독생자를 주셨으니"
+
+</p>
+
+<br>
+
+<p>
+
+요한복음 3:16
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>공지사항</h2>
+
+<div class="notice">● 이번 주일 성찬식이 있습니다.</div>
+
+<div class="notice">● 여름성경학교 참가 신청을 받습니다.</div>
+
+<div class="notice">● 금요기도회는 오후 8시에 시작합니다.</div>
+
+</div>
+
+<div class="card">
+
+<h2>최근 설교</h2>
+
+<br>
+
+<ul>
+
+<li>믿음으로 사는 삶</li>
+
+<li>기도의 능력</li>
+
+<li>감사의 신앙</li>
+
+</ul>
+
+</div>
+
+<div class="card" id="donation">
+
+<h2>온라인 카드헌금</h2>
+
+<br>
+
+<table>
+
+<tr>
+
+<td>헌금종류</td>
+
+<td>
+
+<select>
+
+<option>주일헌금</option>
+
+<option>십일조</option>
+
+<option>감사헌금</option>
+
+<option>선교헌금</option>
+
+<option>건축헌금</option>
+
+<option>기타헌금</option>
+
+</select>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td>성명</td>
+
+<td><input type="text"></td>
+
+</tr>
+
+<tr>
+
+<td>연락처</td>
+
+<td><input type="text"></td>
+
+</tr>
+
+<tr>
+
+<td>헌금금액</td>
+
+<td><input type="number"></td>
+
+</tr>
+
+</table>
+
+<br>
+
+<button onclick="pay()">
+
+카드헌금 결제하기
+
+</button>
+
+</div>
+
+<div class="card">
+
+<h2>계좌헌금</h2>
+
+<br>
+
+<p>
+
+농협 123-456-789012
+
+</p>
+
+<p>
+
+예금주 : 진리와찬양교회
+
+</p>
+
+</div>
+
+</div>
+
+<footer>
+
+Copyright © 2026 Truth & Praise Church
+
+</footer>
+
+<script>
+
+function pay(){
+
+alert("나이스페이먼츠 API 연동 전입니다.");
+
+}
+
+</script>
+
+</body>
+
+</html>

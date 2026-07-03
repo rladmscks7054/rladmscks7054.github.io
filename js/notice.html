@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>공지사항 | 진리와찬양교회</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+.notice-table{
+
+width:100%;
+
+border-collapse:collapse;
+
+margin-top:20px;
+
+}
+
+.notice-table th{
+
+background:#0A4C9A;
+
+color:white;
+
+padding:15px;
+
+}
+
+.notice-table td{
+
+padding:15px;
+
+border-bottom:1px solid #ddd;
+
+text-align:center;
+
+}
+
+.notice-table tr:hover{
+
+background:#f5f5f5;
+
+cursor:pointer;
+
+}
+
+.search-box{
+
+display:flex;
+
+gap:10px;
+
+margin-top:20px;
+
+}
+
+.search-box input{
+
+flex:1;
+
+padding:12px;
+
+}
+
+.search-box button{
+
+width:120px;
+
+}
+
+.write-btn{
+
+margin-top:20px;
+
+text-align:right;
+
+}
+
+.modal{
+
+display:none;
+
+position:fixed;
+
+left:0;
+
+top:0;
+
+width:100%;
+
+height:100%;
+
+background:rgba(0,0,0,.5);
+
+}
+
+.modal-content{
+
+background:white;
+
+width:800px;
+
+max-width:95%;
+
+margin:80px auto;
+
+padding:30px;
+
+border-radius:10px;
+
+}
+
+.close{
+
+float:right;
+
+font-size:30px;
+
+cursor:pointer;
+
+}
+
+.pagination{
+
+display:flex;
+
+justify-content:center;
+
+gap:10px;
+
+margin-top:30px;
+
+}
+
+.pagination button{
+
+width:45px;
+
+height:45px;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>진리와찬양교회</h1>
+
+<p>Truth & Praise Church</p>
+
+</header>
+
+<nav>
+
+<ul>
+
+<li><a href="index.html">홈</a></li>
+
+<li><a href="about.html">교회소개</a></li>
+
+<li><a href="worship.html">예배안내</a></li>
+
+<li><a href="sermon.html">설교영상</a></li>
+
+<li><a href="gallery.html">사진갤러리</a></li>
+
+<li><a href="donate.html">온라인헌금</a></li>
+
+</ul>
+
+</nav>
+
+<div class="container">
+
+<div class="card">
+
+<h2>공지사항</h2>
+
+<div class="search-box">
+
+<input
+type="text"
+id="search"
+placeholder="공지사항 검색">
+
+<button onclick="searchNotice()">
+
+검색
+
+</button>
+
+</div>
+
+<table class="notice-table">
+
+<thead>
+
+<tr>
+
+<th>번호</th>
+
+<th>제목</th>
+
+<th>작성자</th>
+
+<th>작성일</th>
+
+<th>조회수</th>
+
+</tr>
+
+</thead>
+
+<tbody id="noticeBody">
+
+<tr onclick="openNotice('여름성경학교 참가 신청 안내','여름성경학교 참가자를 모집합니다.')">
+
+<td>3</td>
+
+<td>여름성경학교 참가 신청 안내</td>
+
+<td>관리자</td>
+
+<td>2026-07-02</td>
+
+<td>125</td>
+
+</tr>
+
+<tr onclick="openNotice('금요기도회 안내','이번 주 금요기도회는 오후 8시에 시작합니다.')">
+
+<td>2</td>
+
+<td>금요기도회 안내</td>
+
+<td>관리자</td>
+
+<td>2026-06-30</td>
+
+<td>94</td>
+
+</tr>
+
+<tr onclick="openNotice('교회 홈페이지 오픈','교회 홈페이지가 새롭게 오픈했습니다.')">
+
+<td>1</td>
+
+<td>교회 홈페이지 오픈</td>
+
+<td>관리자</td>
+
+<td>2026-06-20</td>
+
+<td>213</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<div class="write-btn">
+
+<button onclick="writeNotice()">
+
+글쓰기(관리자)
+
+</button>
+
+</div>
+
+<div class="pagination">
+
+<button>1</button>
+
+<button>2</button>
+
+<button>3</button>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="modal" class="modal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeNotice()">
+
+×
+
+</span>
+
+<h2 id="title"></h2>
+
+<hr>
+
+<br>
+
+<div id="content"></div>
+
+</div>
+
+</div>
+
+<footer>
+
+Copyright © 2026 Truth & Praise Church
+
+</footer>
+
+<script>
+
+function openNotice(title,content){
+
+document.getElementById("modal").style.display="block";
+
+document.getElementById("title").innerHTML=title;
+
+document.getElementById("content").innerHTML=content;
+
+}
+
+function closeNotice(){
+
+document.getElementById("modal").style.display="none";
+
+}
+
+function searchNotice(){
+
+let keyword=document.getElementById("search").value.toLowerCase();
+
+let rows=document.querySelectorAll("#noticeBody tr");
+
+rows.forEach(function(row){
+
+if(row.innerText.toLowerCase().includes(keyword)){
+
+row.style.display="";
+
+}else{
+
+row.style.display="none";
+
+}
+
+});
+
+}
+
+function writeNotice(){
+
+alert(
+
+"프론트엔드 예제입니다.\n\n"
+
++"실제 운영 시 관리자 로그인 후 글쓰기 페이지로 이동합니다."
+
+);
+
+}
+
+window.onclick=function(e){
+
+if(e.target==document.getElementById("modal")){
+
+closeNotice();
+
+}
+
+}
+
+</script>
+
+</body>
+
+</html>

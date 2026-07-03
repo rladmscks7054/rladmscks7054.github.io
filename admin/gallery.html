@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>사진 갤러리 | 진리와찬양교회</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+
+.gallery-header{
+margin-top:30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:10px;
+}
+
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-top:30px;
+}
+
+.gallery-item{
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 3px 10px rgba(0,0,0,.1);
+cursor:pointer;
+transition:.3s;
+}
+
+.gallery-item:hover{
+transform:translateY(-5px);
+}
+
+.gallery-item img{
+width:100%;
+height:220px;
+object-fit:cover;
+display:block;
+}
+
+.gallery-item h3{
+padding:15px;
+font-size:18px;
+}
+
+.gallery-item p{
+padding:0 15px 15px;
+color:#666;
+}
+
+.filter{
+display:flex;
+gap:10px;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+.filter button{
+width:auto;
+padding:10px 20px;
+}
+
+.modal{
+display:none;
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.8);
+z-index:1000;
+}
+
+.modal-content{
+margin:5% auto;
+width:90%;
+max-width:900px;
+background:white;
+padding:20px;
+border-radius:10px;
+}
+
+.modal img{
+width:100%;
+border-radius:10px;
+}
+
+.close{
+float:right;
+font-size:30px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>진리와찬양교회</h1>
+
+<p>Truth & Praise Church</p>
+
+</header>
+
+<nav>
+
+<ul>
+
+<li><a href="index.html">홈</a></li>
+<li><a href="about.html">교회소개</a></li>
+<li><a href="worship.html">예배안내</a></li>
+<li><a href="notice.html">공지사항</a></li>
+<li><a href="sermon.html">설교영상</a></li>
+<li><a href="donate.html">온라인헌금</a></li>
+
+</ul>
+
+</nav>
+
+<div class="container">
+
+<div class="card">
+
+<h2>교회 사진 갤러리</h2>
+
+<div class="gallery-header">
+
+<input
+type="text"
+id="search"
+placeholder="사진 검색">
+
+</div>
+
+<div class="filter">
+
+<button onclick="filterGallery('all')">전체</button>
+
+<button onclick="filterGallery('worship')">예배</button>
+
+<button onclick="filterGallery('event')">행사</button>
+
+<button onclick="filterGallery('retreat')">수련회</button>
+
+</div>
+
+<div class="gallery-grid" id="gallery">
+
+<div class="gallery-item worship">
+
+<img src="images/worship1.jpg"
+onclick="openImage(this.src)">
+
+<h3>주일예배</h3>
+
+<p>2026년 주일예배</p>
+
+</div>
+
+<div class="gallery-item event">
+
+<img src="images/event1.jpg"
+onclick="openImage(this.src)">
+
+<h3>교회행사</h3>
+
+<p>창립기념 행사</p>
+
+</div>
+
+<div class="gallery-item retreat">
+
+<img src="images/retreat1.jpg"
+onclick="openImage(this.src)">
+
+<h3>청년수련회</h3>
+
+<p>여름수련회</p>
+
+</div>
+
+<div class="gallery-item worship">
+
+<img src="images/worship2.jpg"
+onclick="openImage(this.src)">
+
+<h3>찬양예배</h3>
+
+<p>찬양집회</p>
+
+</div>
+
+<div class="gallery-item event">
+
+<img src="images/event2.jpg"
+onclick="openImage(this.src)">
+
+<h3>성탄축하</h3>
+
+<p>성탄절 행사</p>
+
+</div>
+
+<div class="gallery-item retreat">
+
+<img src="images/retreat2.jpg"
+onclick="openImage(this.src)">
+
+<h3>기도원</h3>
+
+<p>기도회</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div id="modal" class="modal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeImage()">×</span>
+
+<img id="modalImg">
+
+</div>
+
+</div>
+
+<footer>
+
+Copyright © 2026 Truth & Praise Church
+
+</footer>
+
+<script>
+
+function openImage(src){
+
+document.getElementById("modal").style.display="block";
+
+document.getElementById("modalImg").src=src;
+
+}
+
+function closeImage(){
+
+document.getElementById("modal").style.display="none";
+
+}
+
+window.onclick=function(e){
+
+if(e.target==document.getElementById("modal")){
+
+closeImage();
+
+}
+
+}
+
+document.getElementById("search").addEventListener("keyup",function(){
+
+let keyword=this.value.toLowerCase();
+
+document.querySelectorAll(".gallery-item").forEach(function(item){
+
+if(item.innerText.toLowerCase().includes(keyword)){
+
+item.style.display="block";
+
+}else{
+
+item.style.display="none";
+
+}
+
+});
+
+});
+
+function filterGallery(type){
+
+document.querySelectorAll(".gallery-item").forEach(function(item){
+
+if(type==="all"){
+
+item.style.display="block";
+
+}else{
+
+if(item.classList.contains(type)){
+
+item.style.display="block";
+
+}else{
+
+item.style.display="none";
+
+}
+
+}
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
