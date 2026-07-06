@@ -269,23 +269,33 @@ return;
 
 /*
 
-실제 회원가입 예시
+<script type="module">
 
-signup.jsp
+import { signup } from "./js/auth.js";
 
-signup.php
+const form=document.getElementById("signupForm");
 
-/api/signup
+form.addEventListener("submit",async(e)=>{
 
-*/
+e.preventDefault();
 
-alert(
+const email=document.getElementById("email").value;
 
-"프론트엔드 예제입니다.\n\n"
+const password=document.getElementById("password").value;
 
-+"실제 운영 시 서버와 데이터베이스에 회원정보를 저장합니다."
+try{
 
-);
+await signup(email,password);
+
+alert("회원가입이 완료되었습니다.");
+
+location.href="login.html";
+
+}catch(error){
+
+alert(error.message);
+
+}
 
 });
 
