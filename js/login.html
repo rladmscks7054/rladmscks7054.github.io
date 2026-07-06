@@ -185,13 +185,33 @@ Node
 
 */
 
-alert(
+<script type="module">
 
-"프론트엔드 예제입니다.\n\n"
+import { login } from "./js/auth.js";
 
-+"실제 운영 시 서버(JSP/PHP/Node)에서 로그인 인증을 수행합니다."
+const form=document.getElementById("loginForm");
 
-);
+form.addEventListener("submit",async(e)=>{
+
+e.preventDefault();
+
+const email=document.getElementById("userid").value;
+
+const password=document.getElementById("password").value;
+
+try{
+
+await login(email,password);
+
+alert("로그인 성공");
+
+location.href="admin.html";
+
+}catch(error){
+
+alert(error.message);
+
+}
 
 });
 
