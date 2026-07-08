@@ -258,3 +258,61 @@ export async function deleteNewFamily(id){
     await deleteDoc(doc(db,"newfamily",id));
 
 }
+import {
+collection,
+addDoc,
+getDocs,
+deleteDoc,
+updateDoc,
+doc,
+serverTimestamp,
+query,
+orderBy
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+export async function addMember(data){
+
+    await addDoc(collection(db,"members"),{
+
+        ...data,
+
+        createdAt:serverTimestamp()
+
+    });
+
+}
+
+export async function getMembers(){
+
+    const q=query(
+
+        collection(db,"members"),
+
+        orderBy("name")
+
+    );
+
+    const snapshot=await getDocs(q);
+
+    return snapshot.docs.map(doc=>({
+
+        id:doc.id,
+
+        ...doc.data()
+
+    }));
+
+}
+
+export async function deleteMember(id){
+
+    await deleteDoc(doc(db,"members",id));
+
+}
+
+export async function updateMember(id,data){
+
+    await updateDoc(doc(db,"members",id),data);
+
+}
