@@ -362,27 +362,39 @@ row.style.display="none";
 
 }
 
-function writeNotice(){
+<div id="noticeArea"></div>
 
-alert(
+<script type="module">
 
-"프론트엔드 예제입니다.\n\n"
+import { getNotice } from "./js/firestore.js";
 
-+"실제 운영 시 관리자 로그인 후 글쓰기 페이지로 이동합니다."
+async function load(){
 
-);
+const notices=await getNotice();
+
+const area=document.getElementById("noticeArea");
+
+area.innerHTML="";
+
+notices.forEach(n=>{
+
+area.innerHTML+=`
+
+<div class="card">
+
+<h2>${n.title}</h2>
+
+<p>${n.content}</p>
+
+</div>
+
+`;
+
+});
 
 }
 
-window.onclick=function(e){
-
-if(e.target==document.getElementById("modal")){
-
-closeNotice();
-
-}
-
-}
+load();
 
 </script>
 
