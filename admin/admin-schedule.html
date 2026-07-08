@@ -1,0 +1,43 @@
+<h2>교회 일정 관리</h2>
+
+<form id="scheduleForm">
+
+<input
+type="text"
+id="title"
+placeholder="일정 제목"
+required>
+
+<input
+type="date"
+id="date"
+required>
+
+<input
+type="time"
+id="time"
+required>
+
+<input
+type="text"
+id="place"
+placeholder="장소">
+
+<textarea
+id="description"
+placeholder="내용"></textarea>
+
+<button type="submit">
+
+등록
+
+</button>
+
+</form>
+
+<hr>
+
+<div id="scheduleList"></div>
+
+<script type="module"
+src="js/admin-schedule.js"></script>
