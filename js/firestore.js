@@ -393,3 +393,42 @@ export async function getAttendance(){
     }));
 
 }
+import {
+collection,
+query,
+where,
+getDocs,
+deleteDoc,
+doc
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+// 오늘 출석 확인
+
+export async function checkAttendance(uid,date,service){
+
+    const q=query(
+
+        collection(db,"attendance"),
+
+        where("uid","==",uid),
+
+        where("date","==",date),
+
+        where("service","==",service)
+
+    );
+
+    const snapshot=await getDocs(q);
+
+    return snapshot;
+
+}
+
+// 출석취소
+
+export async function deleteAttendance(id){
+
+    await deleteDoc(doc(db,"attendance",id));
+
+}
