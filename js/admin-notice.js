@@ -68,3 +68,22 @@ window.deleteNotice = async function(id){
 }
 
 loadNotice();
+<input
+type="hidden"
+id="editId">
+
+<input
+type="text"
+id="editTitle"
+placeholder="수정할 제목">
+
+<textarea
+id="editContent"
+placeholder="수정할 내용"></textarea>
+
+<button
+id="updateBtn">
+
+수정하기
+
+</button>
