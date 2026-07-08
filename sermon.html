@@ -1740,6 +1740,62 @@ card.style.display="none";
 
 }
 
+<section>
+
+<h2>
+
+설교영상
+
+</h2>
+
+<div id="sermonArea"></div>
+
+</section>
+
+<script type="module">
+
+import { getSermons }
+
+from "./js/firestore.js";
+
+const area=document.getElementById("sermonArea");
+
+async function load(){
+
+const sermons=await getSermons();
+
+area.innerHTML="";
+
+sermons.forEach(s=>{
+
+area.innerHTML+=`
+
+<div class="card">
+
+<h3>${s.title}</h3>
+
+<p>${s.pastor}</p>
+
+<p>${s.bible}</p>
+
+<a href="${s.youtube}"
+
+target="_blank">
+
+유튜브 시청
+
+</a>
+
+</div>
+
+`;
+
+});
+
+}
+
+load();
+
 </script>
 
 </body>
