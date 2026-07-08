@@ -316,3 +316,55 @@ export async function updateMember(id,data){
     await updateDoc(doc(db,"members",id),data);
 
 }
+import {
+
+doc,
+getDoc,
+setDoc,
+serverTimestamp
+
+}
+
+from
+
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+export async function getProfile(uid){
+
+const ref=doc(db,"members",uid);
+
+const snap=await getDoc(ref);
+
+if(snap.exists()){
+
+return snap.data();
+
+}
+
+return null;
+
+}
+
+export async function saveProfile(uid,data){
+
+await setDoc(
+
+doc(db,"members",uid),
+
+{
+
+...data,
+
+updatedAt:serverTimestamp()
+
+},
+
+{
+
+merge:true
+
+}
+
+);
+
+}
