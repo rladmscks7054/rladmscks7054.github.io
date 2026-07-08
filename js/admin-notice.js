@@ -97,3 +97,54 @@ id="updateBtn">
 수정하기
 
 </button>
+list.innerHTML+=`
+
+<div class="card">
+
+<h3>${n.title}</h3>
+
+<p>${n.content}</p>
+
+<button onclick="editNotice('${n.id}','${n.title}','${n.content}')">
+
+수정
+
+</button>
+
+<button onclick="deleteNotice('${n.id}')">
+
+삭제
+
+</button>
+
+</div>
+
+`;
+window.editNotice=function(id,title,content){
+
+document.getElementById("editId").value=id;
+
+document.getElementById("editTitle").value=title;
+
+document.getElementById("editContent").value=content;
+
+}
+document
+
+.getElementById("updateBtn")
+
+.addEventListener("click",async()=>{
+
+const id=document.getElementById("editId").value;
+
+const title=document.getElementById("editTitle").value;
+
+const content=document.getElementById("editContent").value;
+
+await updateNotice(id,title,content);
+
+alert("수정되었습니다.");
+
+loadNotice();
+
+});
