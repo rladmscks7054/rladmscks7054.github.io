@@ -25,3 +25,19 @@ password
 );
 
 }
+import {
+sendEmailVerification
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+document
+
+.getElementById("sendVerify")
+
+.addEventListener("click",async()=>{
+
+    await sendEmailVerification(auth.currentUser);
+
+    alert("인증 메일을 다시 보냈습니다.");
+
+});
