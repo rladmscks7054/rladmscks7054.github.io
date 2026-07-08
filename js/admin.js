@@ -45,3 +45,8 @@ list.innerHTML+=`
 }
 
 loadNotice();
+import { auth } from "./firebase-config.js";
+
+document.getElementById("adminName").innerHTML=
+
+auth.currentUser.email;
