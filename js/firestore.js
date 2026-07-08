@@ -480,3 +480,94 @@ id:doc.id,
 }));
 
 }
+import {
+
+searchAttendance
+
+}
+
+from "./firestore.js";
+
+const list=document.getElementById("attendanceList");
+
+const total=document.getElementById("totalCount");
+
+document
+
+.getElementById("searchBtn")
+
+.addEventListener("click",load);
+
+async function load(){
+
+const date=
+
+document.getElementById("searchDate").value;
+
+const service=
+
+document.getElementById("searchService").value;
+
+const keyword=
+
+document.getElementById("searchName")
+
+.value
+
+.toLowerCase();
+
+const data=
+
+await searchAttendance(
+
+date,
+
+service
+
+);
+
+list.innerHTML="";
+
+let count=0;
+
+data.forEach(a=>{
+
+if(
+
+keyword=="" ||
+
+a.name
+
+.toLowerCase()
+
+.includes(keyword)
+
+){
+
+count++;
+
+list.innerHTML+=`
+
+<div class="card">
+
+<h3>${a.name}</h3>
+
+<p>예배 : ${a.service}</p>
+
+<p>날짜 : ${a.date}</p>
+
+<p>상태 : ${a.status}</p>
+
+</div>
+
+`;
+
+}
+
+});
+
+total.innerHTML=count;
+
+}
+
+load();
