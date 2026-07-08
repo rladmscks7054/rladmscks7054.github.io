@@ -592,3 +592,34 @@ width:100%;
 padding:12px;
 
 }
+.search-box{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+margin:20px 0;
+
+}
+
+.search-box input{
+
+padding:10px;
+
+}
+
+.search-box select{
+
+padding:10px;
+
+}
+
+.search-box button{
+
+padding:10px 20px;
+
+cursor:pointer;
+
+}
