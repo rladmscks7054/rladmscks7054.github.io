@@ -142,3 +142,65 @@ export async function updateSermon(id,data){
 await updateDoc(doc(db,"sermons",id),data);
 
 }
+import {
+collection,
+addDoc,
+getDocs,
+deleteDoc,
+updateDoc,
+doc,
+query,
+orderBy,
+serverTimestamp
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+// 일정 등록
+export async function addSchedule(data){
+
+    await addDoc(collection(db,"schedule"),{
+
+        ...data,
+
+        createdAt:serverTimestamp()
+
+    });
+
+}
+
+// 일정 조회
+export async function getSchedules(){
+
+    const q=query(
+
+        collection(db,"schedule"),
+
+        orderBy("date","asc")
+
+    );
+
+    const snapshot=await getDocs(q);
+
+    return snapshot.docs.map(d=>({
+
+        id:d.id,
+
+        ...d.data()
+
+    }));
+
+}
+
+// 일정 수정
+export async function updateSchedule(id,data){
+
+    await updateDoc(doc(db,"schedule",id),data);
+
+}
+
+// 일정 삭제
+export async function deleteSchedule(id){
+
+    await deleteDoc(doc(db,"schedule",id));
+
+}
