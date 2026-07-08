@@ -368,3 +368,28 @@ merge:true
 );
 
 }
+export async function addAttendance(data){
+
+    await addDoc(collection(db,"attendance"),{
+
+        ...data,
+
+        createdAt:serverTimestamp()
+
+    });
+
+}
+
+export async function getAttendance(){
+
+    const snapshot=await getDocs(collection(db,"attendance"));
+
+    return snapshot.docs.map(doc=>({
+
+        id:doc.id,
+
+        ...doc.data()
+
+    }));
+
+}
