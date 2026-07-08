@@ -37,3 +37,24 @@ list.innerHTML+=`
 }
 
 load();
+id="searchName"
+placeholder="교인 이름">
+
+<button id="searchBtn">
+
+조회
+
+</button>
+
+</div>
+
+<hr>
+
+<h3>
+
+총 출석인원 :
+<span id="totalCount">0</span>명
+
+</h3>
+
+<div id="attendanceList"></div>
