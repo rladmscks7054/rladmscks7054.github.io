@@ -396,6 +396,50 @@ area.innerHTML+=`
 
 load();
 
+<section>
+
+<h2>
+
+공지사항
+
+</h2>
+
+<div id="noticeArea"></div>
+
+</section>
+
+<script type="module">
+
+import { getNotice } from "./js/firestore.js";
+
+const area=document.getElementById("noticeArea");
+
+async function load(){
+
+    const notices=await getNotice();
+
+    area.innerHTML="";
+
+    notices.forEach(n=>{
+
+        area.innerHTML+=`
+
+<div class="notice">
+
+<h3>${n.title}</h3>
+
+<p>${n.content}</p>
+
+</div>
+
+`;
+
+    });
+
+}
+
+load();
+
 </script>
 
 </body>
