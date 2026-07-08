@@ -432,3 +432,51 @@ export async function deleteAttendance(id){
     await deleteDoc(doc(db,"attendance",id));
 
 }
+import {
+
+collection,
+query,
+where,
+getDocs
+
+}
+
+from
+
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+export async function searchAttendance(date,service){
+
+let q=collection(db,"attendance");
+
+let conditions=[];
+
+if(date!=""){
+
+conditions.push(where("date","==",date));
+
+}
+
+if(service!=""){
+
+conditions.push(where("service","==",service));
+
+}
+
+const querySnapshot=
+
+await getDocs(
+
+query(q,...conditions)
+
+);
+
+return querySnapshot.docs.map(doc=>({
+
+id:doc.id,
+
+...doc.data()
+
+}));
+
+}
