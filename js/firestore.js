@@ -63,3 +63,23 @@ export async function deleteNotice(id){
 await deleteDoc(doc(db,"notice",id));
 
 }
+import {
+doc,
+updateDoc
+}
+from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+export async function updateNotice(id,title,content){
+
+    const ref=doc(db,"notice",id);
+
+    await updateDoc(ref,{
+
+        title:title,
+
+        content:content
+
+    });
+
+}
