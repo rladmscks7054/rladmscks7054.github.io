@@ -78,3 +78,25 @@ alert("프로필이 저장되었습니다.");
 });
 
 });
+import { auth } from "./firebase-config.js";
+
+import {
+onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+onAuthStateChanged(auth,(user)=>{
+
+    if(!user) return;
+
+    document.getElementById("verifyStatus").textContent=
+
+    user.emailVerified ?
+
+    "✅ 인증 완료"
+
+    :
+
+    "❌ 미인증";
+
+});
