@@ -83,3 +83,62 @@ export async function updateNotice(id,title,content){
     });
 
 }
+import {
+collection,
+addDoc,
+getDocs,
+deleteDoc,
+doc,
+updateDoc,
+query,
+orderBy,
+serverTimestamp
+}
+from
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+export async function addSermon(data){
+
+await addDoc(collection(db,"sermons"),{
+
+...data,
+
+createdAt:serverTimestamp()
+
+});
+
+}
+
+export async function getSermons(){
+
+const q=query(
+
+collection(db,"sermons"),
+
+orderBy("createdAt","desc")
+
+);
+
+const snapshot=await getDocs(q);
+
+return snapshot.docs.map(doc=>({
+
+id:doc.id,
+
+...doc.data()
+
+}));
+
+}
+
+export async function deleteSermon(id){
+
+await deleteDoc(doc(db,"sermons",id));
+
+}
+
+export async function updateSermon(id,data){
+
+await updateDoc(doc(db,"sermons",id),data);
+
+}
