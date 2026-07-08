@@ -204,3 +204,57 @@ export async function deleteSchedule(id){
     await deleteDoc(doc(db,"schedule",id));
 
 }
+import {
+collection,
+addDoc,
+getDocs,
+deleteDoc,
+doc,
+serverTimestamp,
+query,
+orderBy
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+// 새가족 등록
+export async function addNewFamily(data){
+
+    await addDoc(collection(db,"newfamily"),{
+
+        ...data,
+
+        createdAt:serverTimestamp()
+
+    });
+
+}
+
+// 새가족 조회
+export async function getNewFamily(){
+
+    const q=query(
+
+        collection(db,"newfamily"),
+
+        orderBy("createdAt","desc")
+
+    );
+
+    const snapshot=await getDocs(q);
+
+    return snapshot.docs.map(doc=>({
+
+        id:doc.id,
+
+        ...doc.data()
+
+    }));
+
+}
+
+// 삭제
+export async function deleteNewFamily(id){
+
+    await deleteDoc(doc(db,"newfamily",id));
+
+}
