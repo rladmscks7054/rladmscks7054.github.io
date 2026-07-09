@@ -155,3 +155,29 @@ ${todayCount}명
 </h3>
 
 `;
+const percent=
+
+Math.min(
+
+todayCount,
+
+100
+
+);
+
+document
+
+.getElementById("attendanceBar")
+
+.style.width=
+
+percent+"%";
+realtimeAttendance(data=>{
+
+drawCalendar(data);
+
+drawStatistics(data);
+
+departmentStatistics(data);
+
+});
