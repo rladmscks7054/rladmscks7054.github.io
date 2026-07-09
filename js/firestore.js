@@ -616,3 +616,36 @@ alert("이미 출석했습니다.");
 return;
 
 }
+import {
+collection,
+query,
+where,
+orderBy,
+limit,
+getDocs
+}
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+export async function getMyAttendance(uid){
+
+    const q=query(
+
+        collection(db,"attendance"),
+
+        where("uid","==",uid),
+        orderBy("createdAt","desc"),
+        limit(10)
+
+    );
+
+    const snapshot=await getDocs(q);
+
+    return snapshot.docs.map(doc=>({
+
+        id:doc.id,
+
+        ...doc.data()
+
+    }));
+
+}
