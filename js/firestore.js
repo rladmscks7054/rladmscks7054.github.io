@@ -597,3 +597,22 @@ service:service.value,
 status:"출석"
 
 });
+const check=
+
+await checkAttendance(
+
+decodedText,
+
+today,
+
+service.value
+
+);
+
+if(!check.empty){
+
+alert("이미 출석했습니다.");
+
+return;
+
+}
