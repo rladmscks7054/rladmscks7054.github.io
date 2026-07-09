@@ -649,3 +649,37 @@ export async function getMyAttendance(uid){
     }));
 
 }
+import {
+
+collection,
+onSnapshot
+
+}
+
+from
+
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+export function realtimeAttendance(callback){
+
+onSnapshot(
+
+collection(db,"attendance"),
+
+(snapshot)=>{
+
+const data=snapshot.docs.map(doc=>({
+
+id:doc.id,
+
+...doc.data()
+
+}));
+
+callback(data);
+
+}
+
+);
+
+}
