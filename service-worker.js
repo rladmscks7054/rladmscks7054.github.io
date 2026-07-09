@@ -55,3 +55,8 @@ return response || fetch(event.request);
 );
 
 });
+.catch(()=>{
+
+return caches.match("offline.html");
+
+});
