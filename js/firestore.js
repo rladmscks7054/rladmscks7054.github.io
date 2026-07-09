@@ -571,3 +571,18 @@ total.innerHTML=count;
 }
 
 load();
+export async function getAllAttendance(){
+
+    const snapshot=
+
+    await getDocs(collection(db,"attendance"));
+
+    return snapshot.docs.map(doc=>({
+
+        id:doc.id,
+
+        ...doc.data()
+
+    }));
+
+}
