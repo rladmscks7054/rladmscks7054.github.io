@@ -1,0 +1,25 @@
+{
+    "name":"진리와찬양교회",
+    "short_name":"진리와찬양",
+    "description":"진리와찬양교회 홈페이지",
+    "start_url":"./index.html",
+    "display":"standalone",
+    "background_color":"#ffffff",
+    "theme_color":"#1565C0",
+
+    "icons":[
+
+        {
+            "src":"images/icon-192.png",
+            "sizes":"192x192",
+            "type":"image/png"
+        },
+
+        {
+            "src":"images/icon-512.png",
+            "sizes":"512x512",
+            "type":"image/png"
+        }
+
+    ]
+}
