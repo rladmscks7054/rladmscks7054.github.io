@@ -179,3 +179,102 @@ locationStatus.innerHTML=
 }
 
 );
+function checkTime(){
+
+const now=new Date();
+
+const hour=now.getHours();
+
+const minute=now.getMinutes();
+
+const current=hour*60+minute;
+
+const sundayMorning=
+
+11*60;
+
+const sundayMorningEnd=
+
+12*60+30;
+
+if(
+
+current>=sundayMorning &&
+
+current<=sundayMorningEnd
+
+){
+
+timeStatus.innerHTML=
+
+"✅ 출석 가능한 시간";
+
+return true;
+
+}
+
+timeStatus.innerHTML=
+
+"❌ 예배 시간이 아닙니다.";
+
+return false;
+
+}
+gpsAttendanceBtn.onclick=async()=>{
+
+if(!canAttendance){
+
+alert("교회 근처에서만 가능합니다.");
+
+return;
+
+}
+
+if(!checkTime()){
+
+return;
+
+}
+
+await addAttendance({
+
+uid:user.uid,
+
+name:user.email,
+
+date:today,
+
+service:"주일오전예배",
+
+status:"출석"
+
+});
+
+alert("출석 완료");
+
+}
+const history=
+
+await getMyAttendance(user.uid);
+
+let html="";
+
+history.forEach(h=>{
+
+html+=`
+
+<div class="card">
+
+<h3>${h.service}</h3>
+
+<p>${h.date}</p>
+
+<p>${h.status}</p>
+
+</div>
+
+`;
+
+});
+
+myAttendanceList.innerHTML=html;
