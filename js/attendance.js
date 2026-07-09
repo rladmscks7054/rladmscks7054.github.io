@@ -137,3 +137,45 @@ alert("QR 인식 완료");
 }
 
 );
+const churchLat=37.4619;
+const churchLng=126.6802;
+
+let canAttendance=false;
+
+navigator.geolocation.getCurrentPosition(
+
+(position)=>{
+
+const lat=position.coords.latitude;
+
+const lng=position.coords.longitude;
+
+const distance=
+
+Math.sqrt(
+
+Math.pow(lat-churchLat,2)+
+
+Math.pow(lng-churchLng,2)
+
+);
+
+if(distance<0.005){
+
+locationStatus.innerHTML=
+
+"✅ 교회 근처입니다.";
+
+canAttendance=true;
+
+}else{
+
+locationStatus.innerHTML=
+
+"❌ 교회에서만 출석 가능합니다.";
+
+}
+
+}
+
+);
