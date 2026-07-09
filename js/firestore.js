@@ -586,3 +586,14 @@ export async function getAllAttendance(){
     }));
 
 }
+await addAttendance({
+
+uid:decodedText,
+
+date:today,
+
+service:service.value,
+
+status:"출석"
+
+});
