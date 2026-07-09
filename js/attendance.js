@@ -108,3 +108,32 @@ alert("출석되었습니다.");
 location.reload();
 
 });
+const scanner=
+
+new Html5Qrcode("reader");
+
+scanner.start(
+
+{
+
+facingMode:"environment"
+
+},
+
+{
+
+fps:10,
+
+qrbox:250
+
+},
+
+async(decodedText)=>{
+
+console.log(decodedText);
+
+alert("QR 인식 완료");
+
+}
+
+);
