@@ -14,3 +14,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
+import {
+
+getMessaging
+
+}
+
+from
+
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-messaging.js";
+
+export const messaging=
+
+getMessaging(app);
