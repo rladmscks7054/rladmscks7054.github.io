@@ -683,3 +683,33 @@ callback(data);
 );
 
 }
+import {
+
+doc,
+getDoc
+
+}
+
+from
+
+"https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+export async function getRole(uid){
+
+const ref=
+
+doc(db,"admins",uid);
+
+const snap=
+
+await getDoc(ref);
+
+if(snap.exists()){
+
+return snap.data().role;
+
+}
+
+return "member";
+
+}
