@@ -375,3 +375,62 @@ text-align:center;
 <script type="module"
 src="js/admin-check.js">
 </script>
+const role=
+
+await getRole(user.uid);
+
+adminRole.innerHTML=role;
+switch(role){
+
+case "superadmin":
+
+showAllMenu();
+
+break;
+
+case "pastor":
+
+showPastorMenu();
+
+break;
+
+case "associatePastor":
+
+showAssociateMenu();
+
+break;
+
+case "evangelist":
+
+showEvangelistMenu();
+
+break;
+
+case "teacher":
+
+showTeacherMenu();
+
+break;
+
+}
+rules_version = '2';
+
+service cloud.firestore {
+
+match /databases/{database}/documents {
+
+match /admins/{uid} {
+
+allow read:
+
+if request.auth != null;
+
+allow write:
+
+if false;
+
+}
+
+}
+
+}
